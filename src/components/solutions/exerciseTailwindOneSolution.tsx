@@ -1,7 +1,7 @@
 const steps = [
   { id: "01", name: "Job details", status: "complete" },
   { id: "02", name: "Application form", status: "current" },
-  { id: "03", name: "Preview", status: "upcoming" }
+  { id: "03", name: "Preview", status: "upcoming" },
 ] as const;
 
 const ExerciseTailwindOneSolution = () => {

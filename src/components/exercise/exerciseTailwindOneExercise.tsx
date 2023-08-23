@@ -1,13 +1,13 @@
 const steps = [
   { id: "01", name: "Job details", status: "complete" },
   { id: "02", name: "Application form", status: "current" },
-  { id: "03", name: "Preview", status: "upcoming" }
+  { id: "03", name: "Preview", status: "upcoming" },
 ] as const;
 
 const ExerciseTailwindOneExercise = () => {
   return (
     <nav>
-      <ul className="">
+      <ul className="border-[1px] rounded-md flex justify-between items-stretch ">
         {steps.map((step, stepIdx) => (
           <Step key={step.id} step={step} stepIdx={stepIdx} />
         ))}
@@ -27,10 +27,10 @@ interface StepProps {
 
 const Step = ({ step, stepIdx }: StepProps) => {
   return (
-    <li key={step.name} className="">
+    <li key={step.name} className="flex w-full border-l pl-2 ">
       {step.status === "complete" ? (
-        <span className="">
-          <span className="">
+        <div className="flex justify-between items-center">
+          <div className="bg-violet-600 w-8 h-8 rounded-full flex justify-center items-center m-2 ml-4 ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -45,33 +45,24 @@ const Step = ({ step, stepIdx }: StepProps) => {
                 d="M4.5 12.75l6 6 9-13.5"
               />
             </svg>
-          </span>
-          <span className="">{step.name}</span>
-        </span>
+          </div>
+          <span className="ml-2 text-xs">{step.name}</span>
+        </div>
       ) : step.status === "current" ? (
-        <div className="">
-          <span className="">
-            <span className="">{step.id}</span>
+        <div className="flex justify-center items-center border-x-1-slate">
+          <span className="flex rounded-full border-2 w-8 h-8 p-1 border-violet-400 justify-center items-center">
+            <span className="text-xs ">{step.id}</span>
           </span>
-          <span className="">{step.name}</span>
+          <span className="ml-2 text-xs text-violet-500">{step.name}</span>
         </div>
       ) : (
-        <div className="">
-          <span className="">
-            <span className="">
-              <span className="">{step.id}</span>
-            </span>
-            <span className="">{step.name}</span>
+        <div className="flex justify-center items-center">
+          <span className="flex rounded-full border-2 w-8 h-8 p-1 border-slate-200 justify-center items-center">
+            <span className="text-xs">{step.id}</span>
           </span>
+          <span className="ml-2 text-[0.5rem]">{step.name}</span>
         </div>
       )}
-
-      {/* Separator */}
-      {stepIdx !== steps.length - 1 ? (
-        <>
-          <div className="" />
-        </>
-      ) : null}
     </li>
   );
 };
